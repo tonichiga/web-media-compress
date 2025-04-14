@@ -1,0 +1,35 @@
+@layer theme, base, components, utilities;
+@config '../../../tailwind.config.ts';
+
+@import "tailwindcss";
+
+@import "./font/FiraSans/FiraSans.css" layer(utilities);
+@import "./_media.css" layer(utilities);
+@import "./_variables.css" layer(utilities);
+@import "./_scroll-bar.css" layer(utilities);
+
+@custom-variant light (&:where(.light, .light *));
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1280px;
+  --breakpoint-desktop: 1920px;
+
+  --breakpoint-max-se: 375px;
+  --breakpoint-max-mobile: 767px;
+  --breakpoint-max-tablet: 1279px;
+  --breakpoint-max-laptop: 1919px;
+  --color-primary: red; /* color for light */
+  --screens-hover: {
+    raw: "(hover: hover)";
+  }
+}
+
+.dark {
+  --color-primary: yellow; /* color for dark */
+}
+
+:root {
+  /* for variables  not use tailwind classes */
+}

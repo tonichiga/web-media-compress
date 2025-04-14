@@ -1,0 +1,36 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "plugins": ["import"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "import/no-internal-modules": [
+      "error",
+      {
+        "allow": [
+          "**/index.ts",
+          "next/server",
+          "next/navigation",
+          "@reduxjs/toolkit/query/react",
+          "@reduxjs/toolkit/query",
+          "next-intl/middleware",
+          "next-intl/routing",
+          "next-intl/server",
+          "next-intl/navigation",
+          "next/font/google",
+          "/styles/globals.css",
+          "next-intl/plugin",
+          "next/constants.js"
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/index.ts", "**/index.tsx"],
+      "rules": {
+        // Отключаем правило внутри index.ts
+        "import/no-internal-modules": "off"
+      }
+    }
+  ]
+}
