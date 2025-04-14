@@ -1,28 +1,24 @@
-import { baseQuery } from "@/07.shared/lib";
-import {
-  BaseQueryFn,
-  FetchArgs,
-  FetchBaseQueryError,
-} from "@reduxjs/toolkit/query";
+import { Children } from "react";
 
-const privateBaseQuery: BaseQueryFn<
-  string | FetchArgs,
-  unknown,
-  FetchBaseQueryError
-> = async (args, api, extraOptions) => {
-  const result = await baseQuery(args, api, extraOptions);
+interface IShowProps {
+  children: React.ReactNode;
+}
 
-  if (result.error && result.error.status === 401) {
-    /* Custom login for refresh */
-    // const hash = window.Telegram.WebApp.initData || HASH;
-    // const token = await authApi.refresh(hash);
-    // if (token) {
-    //   result = await baseQuery(args, api, extraOptions);
-    // } else {
-    //   api.dispatch(userOperations.logout());
-    // }
-  }
-  return result;
+const Show = ({ children }: IShowProps) => {
+  let whenComponent = null;
+  let elseComponents = null;
+
+  Children.forEach(children, (child: any) => {
+    if (child.props.isTrue === undefined) {
+      elseComponents = child;
+    } else if (!whenComponent && child.props.isTrue) {
+      whenComponent = child;
+    }
+  });
+  return whenComponent || elseComponents;
 };
 
-export { privateBaseQuery, baseQuery };
+Show.When = ({ isTrue, children }) => isTrue && children;
+Show.Else = ({ children }) => children;
+
+export default Show;

@@ -19,7 +19,9 @@
           "next/font/google",
           "/styles/globals.css",
           "next-intl/plugin",
-          "next/constants.js"
+          "next/constants.js",
+          "@/07.shared/components/ui",
+          "**/components/**"
         ]
       }
     ]
