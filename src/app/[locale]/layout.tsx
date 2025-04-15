@@ -36,13 +36,13 @@ const RootLayout = async ({
   }
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <body className={`${INTER.variable} min-h-screen flex flex-col`}>
         <NextIntlClientProvider>
           <ReduxProvider>
             <ThemeProvider
               attribute="class"
-              defaultTheme="system"
+              defaultTheme="dark"
               enableSystem
               disableTransitionOnChange
             >

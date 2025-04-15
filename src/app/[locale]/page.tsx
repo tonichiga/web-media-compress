@@ -1,15 +1,7 @@
-import { ThemeChanger } from "@/07.shared/ui";
+import { CompressView } from "@/03.views/compress";
 
 const Home = () => {
-  return (
-    <div className="h-dvh w-full flex flex-col items-center justify-center dark:bg-amber-300">
-      <div className="text-mint-500  tablet:text-red-500 w-full grid place-items-center  font-bold font-Fira">
-        HELLO WORLD
-      </div>
-
-      <ThemeChanger />
-    </div>
-  );
+  return <CompressView />;
 };
 
 export default Home;
